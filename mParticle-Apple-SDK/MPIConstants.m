@@ -294,7 +294,7 @@ const NSTimeInterval CONFIG_REQUESTS_QUIET_INTERVAL = 10.0*60;
 const NSUInteger EVENT_LIMIT = 1000; // maximum number of events per session
 
 // Attributes limits
-const NSInteger LIMIT_ATTR_COUNT = 100;
+const NSInteger LIMIT_ATTR_COUNT = 500;
 const NSInteger LIMIT_ATTR_LENGTH = 256;
 const NSInteger LIMIT_NAME = 256;
 const NSInteger LIMIT_USER_ATTR_LENGTH = 4096;
