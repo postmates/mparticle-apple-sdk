@@ -25,7 +25,7 @@
     if (!localKey) {
         localKey = key;
     }
-    
+
     return localKey;
 }
 
@@ -54,13 +54,13 @@
     __block NSMutableDictionary<NSString *, NSString *> *transformedDictionary = [[NSMutableDictionary alloc] initWithCapacity:originalDictionary.count];
     Class NSStringClass = [NSString class];
     Class NSNumberClass = [NSNumber class];
-    
+
     [originalDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if ([obj isKindOfClass:NSStringClass]) {
             transformedDictionary[key] = obj;
         } else if ([obj isKindOfClass:NSNumberClass]) {
             NSNumber *numberAttribute = (NSNumber *)obj;
-            
+
             if (numberAttribute == (void *)kCFBooleanFalse || numberAttribute == (void *)kCFBooleanTrue) {
                 transformedDictionary[key] = [numberAttribute boolValue] ? @"Y" : @"N";
             } else {
@@ -72,11 +72,10 @@
             transformedDictionary[key] = [[NSString alloc] initWithData:obj encoding:NSUTF8StringEncoding];
         } else {
             MPILogError(@"Data type is not supported as an attribute value: %@ - %@", obj, [[obj class] description]);
-            NSAssert([obj isKindOfClass:[NSString class]], @"Data type is not supported as an attribute value");
             return;
         }
     }];
-    
+
     return (NSDictionary *)transformedDictionary;
 }
 
